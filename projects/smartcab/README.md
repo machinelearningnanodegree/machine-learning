@@ -1,5 +1,19 @@
-# Project 4: Reinforcement Learning
-## Train a Smartcab How to Drive
+#MLND Slack Team Walkthrough.
+
+We have seen in our experience, that many students struggle with this project, largely due to the code.
+This fork of the standard P4, is made to help you understand some of the complicated code used in P4.  Please review the code, add your comments and understanding.
+
+The ideal situation here is to combine our knowledge and explanation of of what's going in the code.
+Everyone is welcome to contribute, please use the pull request system.
+
+
+
+
+
+---
+#### Original Udacity Readme 
+#### Project 4: Reinforcement Learning
+#### Train a Smartcab How to Drive
 
 ### Install
 
