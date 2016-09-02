@@ -7,7 +7,14 @@ class LearningAgent(Agent):
     """An agent that learns to drive in the smartcab world."""
 
     def __init__(self, env):
+        
+        #question - Why are they using super() here? and what does it mean?
+        
         super(LearningAgent, self).__init__(env)  # sets self.env = env, state = None, next_waypoint = None, and a default color
+        
+        #super is a way inherit the parent class of the Learningagent.  In this case, that's Agent, which already has an env set,
+        #so by calling super, we inherit the env from the agent superclass, this insures that we all agents are running in the same env
+        
         self.color = 'red'  # override color
         self.planner = RoutePlanner(self.env, self)  # simple route planner to get next_waypoint
         # TODO: Initialize any additional variables here
