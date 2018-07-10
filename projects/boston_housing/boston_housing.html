@@ -11802,7 +11802,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[44]:</div>
+<div class="prompt input_prompt">In&nbsp;[7]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Import libraries necessary for this project</span>
@@ -11876,23 +11876,23 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[45]:</div>
+<div class="prompt input_prompt">In&nbsp;[8]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># Minimum price of the data</span>
-<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">minimum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># Maximum price of the data</span>
-<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">maximum_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># Mean price of the data</span>
-<span class="n">mean_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<span class="n">mean_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># Median price of the data</span>
-<span class="n">median_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+<span class="n">median_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># Standard deviation of prices of the data</span>
-<span class="n">std_price</span> <span class="o">=</span> <span class="n">prices</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+<span class="n">std_price</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">prices</span><span class="p">)</span>
 
 <span class="c1"># Show the calculated statistics</span>
 <span class="k">print</span> <span class="s2">&quot;Statistics for Boston housing dataset:</span><span class="se">\n</span><span class="s2">&quot;</span>
@@ -11923,7 +11923,7 @@ Minimum price: $105,000.00
 Maximum price: $1,024,800.00
 Mean price: $454,342.94
 Median price $438,900.00
-Standard deviation of prices: $165,340.28
+Standard deviation of prices: $165,171.13
 </pre>
 </div>
 </div>
@@ -12183,7 +12183,10 @@ Standard deviation of prices: $165,340.28
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong> The benefit of splitting a dataset into training and testing subsets is to detect if a model trained on the training set will generalize well when applied to the testing set or if it is simply "memorizing" the training set and overfitting the data.</p>
+<p><strong>Answer: </strong> The benefit of splitting a dataset into training and testing subsets is to detect if a model trained on the training set will generalize well when applied to the testing set or if it is simply "memorizing" the training set and overfitting the data.  This is done by training the model on only the training data and then using that trained model to predict the y values for the test data.  The predicted values are compared to the actual values resulting in an accuracy score between 0 and 1 (with 1 being the best possible score, meaning the model predicted the test data values exactly):</p>
+<p><code>y_pred = model.predict(X_test)
+acc = accuracy_score(y_test, y_pred)</code></p>
+<p>We can avoid overfit models by selecting models with a higher accuracy score.</p>
 
 </div>
 </div>
@@ -12384,7 +12387,8 @@ Think about the pros and cons of adding more training points based on if the tra
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong> The grid search technique involves making a table of the hyperparameters of a model (e.g. maximum depth in a decision tree) with a few values that grow exponentially.  For each combination of hyperparameter values, we compute the F1 score and then pick the combination which yields the best score.  We use grid search when we have a model that has multiple hyperparameters and we want to find the optimal combination of them that produces the best F1 score.</p>
+<p><strong>Answer: </strong> The grid search technique involves making a table of the hyperparameters of a model (e.g. maximum depth in a decision tree) with a few values that grow exponentially.  For each combination of hyperparameter values, we compute the score* and then pick the combination which yields the best score*.  The grid search technique is used when we have a model that has multiple hyperparameters and we want to find the optimal combination which produces a model with the best score*.</p>
+<p>* Score denotes either the R2 score for regression or the F1 score for classification.</p>
 
 </div>
 </div>
@@ -12409,7 +12413,8 @@ Think about the pros and cons of adding more training points based on if the tra
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong> K-fold cross-validation involves dividing the data into k buckets and then training the model K times, each time using a different bucket as the test data and the remaining K - 1 buckets as training data.  The results are averaged to form the final model.  The benefit it provides for grid search is that it ensures the F1 scores calculated for the grid are well-generalized for the entire dataset, so when we pick the optimal set of parameters we can be sure that it is optimal for the entire data set and not a specific subset of test data.</p>
+<p><strong>Answer: </strong> When partitioning data into separate sets for training, testing, and validation, we reduce the amount of data that can be used for training our models.  K-fold cross-validation is a technique for addressing this problem.  It works as follows:  First, we divide our data into k subsets (called folds).  Next we train our model k times, each time picking one fold to be our test data and using the remaining k - 1 folds as our training data.  After each step, we record the score for that model.  The k scores are then averaged to obtain the performance measure reported by k-fold validation.  It is also notable that when we use k-fold cross-validation, we no longer require any data to be allocated to the validation set since there is no way for knowledge about the tests to leak into the model.</p>
+<p>The benefit that K-fold cross-validation provides for grid search is that it ensures the scores calculated for the grid are well-generalized for the entire dataset.  Thus when we pick the optimal set of parameters using grid search we can be sure that the parameters are optimal for the entire dataset and not just a specific subset of the data.</p>
 
 </div>
 </div>
@@ -12729,7 +12734,12 @@ Range in prices: $29,438.89
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Answer: </strong> The constructed model should not be used in a real-world setting for several reasons.  Firstly, it is based on historical data from 1978 which is not relevant to today's real estate market.  Many factors will have changed between now and then including housing interest rates, Boston's overall economy, its population and demographics, and so on.  Furthermore, the model only has three features for predicting the MEDV which can only give us a rough approximation at best.  In reality, the valuation of a home is based on numerous factors not represented in the data such as whether the house needs repairs, the architecture of the house, the comparables for nearby houses, and so on.  Lastly, the data is highly specific to Boston and would not be accurate if used for predicting home prices in other cities where the standard of living is different.</p>
+<p><strong>Answer: </strong></p>
+<p>The constructed model should not be used in a real-world setting for several reasons.  Firstly, it is based on historical data from 1978 which is not relevant to today's real estate market.  Many factors will have changed between now and then including housing interest rates, Boston's overall economy, its population and demographics, and so on.</p>
+<p>Furthermore, the model only has three features for predicting the MEDV which can only give us a rough approximation at best.  In reality, the valuation of a home is based on numerous factors not represented in the data such as whether the house needs repairs, the architecture of the house, the comparables for nearby houses, and so on.</p>
+<p>Another concern is that the model is not robust enough to make consistent predictions.  This is evident based on the ten sensitivity trials which show a range of \$29,438 for the price of the same house.  In the case of Client 2, this amounts to more than 12\% of the predicted value of their home.</p>
+<p>It should also be noted that the data is only specific to Boston and would not be accurate if used for predicting the home prices in other cities where the economic conditions are different.</p>
+<p>Lastly, it would not be fair to judge the price of an individual home based on the characteristics of the entire neighborhood.  There are still too many factors that could vary from house to house in one neighborhood (Is the house foreclosed?  How nearby is it to the neighborhood's park?  How well has it been maintained by its current tenants? etc.)</p>
 
 </div>
 </div>
