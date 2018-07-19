@@ -2,7 +2,13 @@
 
 Content for Udacity's Machine Learning curriculum, which includes projects and their descriptions.
 
-## PYTHON 2.7
+## If stuffs not working
+
+### Did I activate my virtual-env?
+
+`workon ml`
+
+### PYTHON 2.7
 
 If modules are not found, it is likely because THE JUPYTER NOTEBOOK KERNEL KEEPS DEFAULTING TO PYTHON 3 EVEN THOUGH WE ARE USING PYTHON 2!!!!!
 
