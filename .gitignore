@@ -63,3 +63,7 @@ target/
 
 #Ipython Notebook
 .ipynb_checkpoints
+
+# Lab Data
+labs/pca/data/lfw_home/lfw_funneled/
+labs/pca/data/lfw_home/lfwfunneled.tgz

@@ -2,6 +2,11 @@
 
 Content for Udacity's Machine Learning curriculum, which includes projects and their descriptions.
 
+## TO DO ITEMS
+
+- Finish Bayesian Spam Classifier Lab (`/labs/bayesian-spam-classifier`)
+- Finish PCA Minilab (`./labs/pca`)
+
 ## If stuffs not working
 
 ### Did I activate my virtual-env?
