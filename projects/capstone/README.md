@@ -1,3 +1,11 @@
-# Project 5: Capstone
+# Machine Learning Engineer Nanodegree
+## Specializations
+## Project: Capstone Proposal and Capstone Project
 
-The Capstone Project for the Machine Learning Engineer Nanodegree does not have any requirements for code, libraries, or datasets. You are free to choose your project as you wish! For students who are unable to construct a capstone project on their own imagination, a pre-built project has been provided in `robot_motion_planning`.
+**Note**
+
+The Capstone is a two-staged project. The first is the proposal component, where you can receive valuable feedback about your project idea, design, and proposed solution. This must be completed prior to your implementation and submitting for the capstone project. 
+
+You can find the [capstone proposal rubric here](https://review.udacity.com/#!/rubrics/410/view), and the [capstone project rubric here](https://review.udacity.com/#!/rubrics/108/view). Please ensure that you are following directions correctly before submitting these two stages which encapsulate your capstone.
+
+Please email [machine-support@udacity.com](mailto:machine-support@udacity.com) if you have any questions.

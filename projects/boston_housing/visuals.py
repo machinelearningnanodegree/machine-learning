@@ -3,6 +3,10 @@
 # Necessary for newer version of matplotlib
 import warnings
 warnings.filterwarnings("ignore", category = UserWarning, module = "matplotlib")
+#
+# Display inline matplotlib plots with IPython
+from IPython import get_ipython
+get_ipython().run_line_magic('matplotlib', 'inline')
 ###########################################
 
 import matplotlib.pyplot as pl
@@ -120,7 +124,7 @@ def PredictTrials(X, y, fitter, data):
         prices.append(pred)
         
         # Result
-        print "Trial {}: ${:,.2f}".format(k+1, pred)
+        print("Trial {}: ${:,.2f}".format(k+1, pred))
 
     # Display price range
-    print "\nRange in prices: ${:,.2f}".format(max(prices) - min(prices))
+    print("\nRange in prices: ${:,.2f}".format(max(prices) - min(prices)))
